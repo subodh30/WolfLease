@@ -1,3 +1,4 @@
+from attr import fields
 from rest_framework import serializers
 from housing import models
 
@@ -19,4 +20,9 @@ class OwnerSerializer(serializers.ModelSerializer):
 class InterestedSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Interested
+        fields = '__all__'
+
+class ApartmentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Apartment
         fields = '__all__'
