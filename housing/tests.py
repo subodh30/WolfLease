@@ -10,7 +10,7 @@ class OwnerTests(APITestCase):
         """
         Ensure we can create a new Owner object.
         """
-        url = '/owners'
+        url = '/owners/add'
         data = {'contact_number': '1234567890', 'contact_email': 'test@testing.com', 'password': 'test'}
         response = self.client.post(url, data, format='json')
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
