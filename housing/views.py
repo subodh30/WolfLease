@@ -1,11 +1,10 @@
+from venv import create
 from django.shortcuts import render
-from rest_framework import filters, viewsets, generics
+from rest_framework import filters, generics
 from housing import serializers
 from housing import models
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
-from rest_framework.views import APIView
+from rest_framework.decorators import api_view, permission_classes, authentication_classes
+
 
 # Create your views here.
 class UserViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
@@ -19,17 +18,30 @@ class UserViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIV
     queryset = models.User.objects.all()
     serializer_class = serializers.UserSerializer
 
+class UserCreateViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
+    queryset = models.User.objects.all()
+    serializer_class = serializers.UserSerializer
+    permission_classes=[]
+    authentication_classes=[]
+
 class FlatViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
     search_fields = ['availability', 'rent_per_room']
     filter_backends = (filters.SearchFilter,)
     queryset = models.Flat.objects.all()
     serializer_class = serializers.FlatSerializer
 
-class OwnerViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
+class OwnerViewSet(generics.ListAPIView, generics.RetrieveUpdateDestroyAPIView):
     search_fields = ['contact_email', 'contact_number', 'id']
     filter_backends = (filters.SearchFilter,)
     queryset = models.Owner.objects.all()
     serializer_class = serializers.OwnerSerializer
+   
+
+class OwnerCreateViewSet(generics.CreateAPIView):
+    queryset = models.Owner.objects.all()
+    serializer_class = serializers.OwnerSerializer
+    permission_classes=[]
+    authentication_classes=[]
 
 class InterestedViewSet(generics.ListCreateAPIView, generics.RetrieveUpdateDestroyAPIView):
     search_fields = ['apartment_id', 'flat_id', 'user_id']
