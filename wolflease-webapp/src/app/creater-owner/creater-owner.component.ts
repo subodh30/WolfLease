@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { Owner } from '../models/Owner';
+import { CreateOwner} from '../models/CreateOwner';
 
 
 export interface DialogData {
@@ -17,21 +17,18 @@ export interface DialogData {
   styleUrls: ['./creater-owner.component.scss']
 })
 
-export class CreaterOwnerComponent implements OnInit {
+export class CreaterOwnerComponent {
 
   createOwnerForm : FormGroup;
   loading: boolean = false;
   createFormData : Object = {};
   constructor(private fb: FormBuilder, public dialog: MatDialog, private router: Router) {
     this.createOwnerForm = this.fb.group({
-      number: ['', [Validators.required]],
-      email: ['', [Validators.required]],
+      contact_number: ['', [Validators.required]],
+      contact_email: ['', [Validators.required]],
       password: ['', [Validators.required]],
    });
    }
-
-  ngOnInit(): void {
-  }
 
   // submit function to call actual API and get short URL
   createNewOwner(){
@@ -40,9 +37,9 @@ export class CreaterOwnerComponent implements OnInit {
     {
       this.createOwnerForm.markAllAsTouched();
       this.loading = true;
-      let owner = new Owner({
-        "number": this.createOwnerForm.get('number')?.value,
-        "email" : this.createOwnerForm.get('email')?.value,
+      let owner = new CreateOwner({
+        "contact_number": this.createOwnerForm.get('contact_number')?.value,
+        "contact_email" : this.createOwnerForm.get('contact_email')?.value,
         "password" : this.createOwnerForm.get('password')?.value
       });
     }
