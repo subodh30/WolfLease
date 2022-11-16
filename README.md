@@ -17,7 +17,7 @@
 [![Generate and Deploy Documentation](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/generate-documentation.yml/badge.svg)](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/generate-documentation.yml)
 
 [![Documentation Badge](https://img.shields.io/badge/API_Documentation-pdoc-blue.svg)](https://gentle-smoke-0777e400f.2.azurestaticapps.net)
-[![Documentation Badge](https://img.shields.io/badge/APP_Documentation-compodoc-blue.svg)](https://victorious-sky-08a81ed0f.2.azurestaticapps.net/)
+[![Documentation Badge](https://img.shields.io/badge/APP_Documentation-compodoc-blue.svg)](https://ashy-coast-0e960be0f.2.azurestaticapps.net)
 [![APIs](https://img.shields.io/badge/APIs-postman-orange.svg)](https://www.postman.com/deepmm/workspace/csc510-group-5/collection/2533107-25e62a4e-c150-4277-a4b1-09f84b60c57a?action=share&creator=2533107)
 
 ![Intro Banner](https://lmsstorageservice.blob.core.windows.net/images/WolfLease_main_img.png)
