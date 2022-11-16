@@ -7,15 +7,15 @@
     <form [formGroup]="createOwnerForm" (ngSubmit)="createNewOwner()" novalidate>
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Enter contact number</mat-label>
-        <input type="text" matInput placeholder="123456789" formControlName="number">
-        <mat-error *ngIf="createOwnerForm?.get('number')?.errors?.['required']">
+        <input type="text" matInput placeholder="123456789" formControlName="contact_number">
+        <mat-error *ngIf="createOwnerForm?.get('contact_number')?.errors?.['required']">
           A contact number is required.
         </mat-error>
       </mat-form-field>
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Enter contact email</mat-label>
-        <input type="text" matInput placeholder="something@test.com" formControlName="email">
-        <mat-error *ngIf="createOwnerForm?.get('email')?.errors?.['required']">
+        <input type="text" matInput placeholder="something@test.com" formControlName="contact_email">
+        <mat-error *ngIf="createOwnerForm?.get('contact_email')?.errors?.['required']">
           A contact email is required.
         </mat-error>
       </mat-form-field>

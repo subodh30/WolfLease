@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AdminComponent } from './admin/admin.component';
-import { ApartmentComponent } from './apartment/apartment.component';
 import { LeaseComponent } from './lease/lease.component';
 import { FlatComponent } from './flat/flat.component';
 import { UserComponent } from './user/user.component';
@@ -14,16 +13,18 @@ import {MatInputModule} from '@angular/material/input';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CreateApartmentComponent } from './create-apartment/create-apartment.component';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
     AppComponent,
     AdminComponent,
-    ApartmentComponent,
     LeaseComponent,
     FlatComponent,
     UserComponent,
-    CreaterOwnerComponent
+    CreaterOwnerComponent,
+    CreateApartmentComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +33,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatInputModule,
     MatDialogModule,
     MatProgressSpinnerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
