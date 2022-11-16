@@ -8,6 +8,7 @@ import { ApartmentComponent } from './apartment/apartment.component';
 import { LeaseComponent } from './lease/lease.component';
 import { FlatComponent } from './flat/flat.component';
 import { UserComponent } from './user/user.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { UserComponent } from './user/user.component';
     UserComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
