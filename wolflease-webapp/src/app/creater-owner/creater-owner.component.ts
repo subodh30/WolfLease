@@ -17,7 +17,7 @@ export interface DialogData {
   styleUrls: ['./creater-owner.component.scss']
 })
 
-export class CreaterOwnerComponent implements OnInit {
+export class CreaterOwnerComponent {
 
   createOwnerForm : FormGroup;
   loading: boolean = false;
@@ -29,9 +29,6 @@ export class CreaterOwnerComponent implements OnInit {
       password: ['', [Validators.required]],
    });
    }
-
-  ngOnInit(): void {
-  }
 
   // submit function to call actual API and get short URL
   createNewOwner(){
