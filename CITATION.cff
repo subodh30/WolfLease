@@ -1,6 +1,21 @@
-cff-version: 1.2.0
+cff-version: 1.0.0
 message: "If you use this software, please cite it as below."
 authors:
+- family-names: "Rohit"
+  given-names: "Nair"
+
+- family-names: "Deep"
+  given-names: "Mehta"
+
+- family-names: "Aditya"
+  given-names: "Khadse"
+
+- family-names: "Anmol"
+  given-names: "Lunavat"
+
+- family-names: "Pritesh"
+  given-names: "Surana"
+  
 - family-names: "Gujar"
   given-names: "Subodh"
   
@@ -15,8 +30,9 @@ authors:
   
 - family-names: "Patil"
   given-names: "Kunal"
+
 title: "WolfLease"
 version: 1.0.0
-doi: 10.5281/zenodo.1234
-date-released: 2022-10-07
-url: "https://github.com/subodh30/WolfLease"
+doi: 10.5281/zenodo.7327347
+date-released: 2022-11-16
+url: "https://github.com/CSC510-Group-5/WolfLease"
