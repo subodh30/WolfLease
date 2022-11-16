@@ -32,6 +32,10 @@ jobs:
         run: |
           cd wolflease-webapi
           pip install -r requirements.txt
+          python manage.py migrate
+          echo "from django.contrib.auth.models import User" > createadmin.py
+          echo "User.objects.create_superuser('admin', 'admin@wolflease.com', 'admin')" >> createadmin.py
+          python manage.py shell < createadmin.py
         
       # Optional: Add step to run tests here (PyTest, Django test suites, etc.)
       
