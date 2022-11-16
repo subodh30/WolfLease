@@ -7,10 +7,10 @@
 [![GitHub contributors](https://img.shields.io/github/contributors/CSC510-Group-5/WolfLease)](https://github.com/CSC510-Group-5/WolfLease/graphs/contributors)
 [![GitHub commit activity](https://img.shields.io/github/commit-activity/m/CSC510-Group-5/WolfLease)](https://github.com/CSC510-Group-5/WolfLease/graphs/commit-activity)
 [![DOI](https://zenodo.org/badge/564859788.svg)](https://zenodo.org/badge/latestdoi/564859788)
-[![GitHub license](https://img.shields.io/github/license/CSC510-Group-5/WolfLease)](https://github.com/CSC510-Group-5/WolfLease/blob/main/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/CSC510-Group-5/WolfLease)](https://github.com/CSC510-Group-5/WolfLease/blob/master/LICENSE)
 
 [![GitHub issues](https://img.shields.io/github/issues/CSC510-Group-5/WolfLease)](https://github.com/CSC510-Group-5/WolfLease/issues)
-[![codecov](https://codecov.io/gh/CSC510-Group-5/WolfLease/branch/main/graph/badge.svg?token=RPORD3384B)](https://codecov.io/gh/CSC510-Group-5/WolfLease)
+[![codecov](https://codecov.io/gh/CSC510-Group-5/WolfLease/branch/master/graph/badge.svg?token=RPORD3384B)](https://codecov.io/gh/CSC510-Group-5/WolfLease)
 [![Build and Push WebApp](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/build-webapp.yml/badge.svg)](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/build-webapp.yml)
 [![CodeQL](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/codeql-analysis.yml)
 [![ESLint](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/eslint.yml/badge.svg)](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/eslint.yml)
