@@ -40,7 +40,7 @@ jobs:
         with:
           name: python-app
           path: |
-            wolflease-webapi/. 
+            wolflease-webapi/
             !wolflease-webapi/venv/
 
   deploy:
