@@ -12,6 +12,8 @@
 [![GitHub issues](https://img.shields.io/github/issues/CSC510-Group-5/WolfLease)](https://github.com/CSC510-Group-5/WolfLease/issues)
 [![codecov](https://codecov.io/gh/CSC510-Group-5/WolfLease/branch/master/graph/badge.svg?token=RPORD3384B)](https://codecov.io/gh/CSC510-Group-5/WolfLease)
 [![Build and Push WebApp](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/build-webapp.yml/badge.svg)](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/build-webapp.yml)
+[![Build and Deploy WebApi](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/build-webapi.yml/badge.svg)](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/build-webapi.yml)
+[![Test](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/tests.yml/badge.svg)](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/tests.yml)
 [![CodeQL](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/codeql-analysis.yml)
 [![ESLint](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/eslint.yml/badge.svg)](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/eslint.yml)
 [![Generate and Deploy Documentation](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/generate-documentation.yml/badge.svg)](https://github.com/CSC510-Group-5/WolfLease/actions/workflows/generate-documentation.yml)
