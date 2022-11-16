@@ -16,7 +16,7 @@
           "project": [
             "tsconfig.json"
           ],
-          "tsconfigRootDir": "url-shortner-webapp",
+          "tsconfigRootDir": "wolflease-webapp",
       "sourceType": "module",
           "createDefaultProgram": true
         },
