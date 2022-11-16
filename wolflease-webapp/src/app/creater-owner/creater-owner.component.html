@@ -1,0 +1,31 @@
+<div class="wrapper">
+    <div class="overlay" *ngIf="loading === true">
+      <div class="center">
+    <mat-spinner diameter=50 ></mat-spinner>
+    </div>
+    </div>
+    <form [formGroup]="createOwnerForm" (ngSubmit)="createNewOwner()" novalidate>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Enter contact number</mat-label>
+        <input type="text" matInput placeholder="123456789" formControlName="number">
+        <mat-error *ngIf="createOwnerForm?.get('number')?.errors?.['required']">
+          A contact number is required.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Enter contact email</mat-label>
+        <input type="text" matInput placeholder="something@test.com" formControlName="email">
+        <mat-error *ngIf="createOwnerForm?.get('email')?.errors?.['required']">
+          A contact email is required.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Enter password</mat-label>
+        <input type="text" matInput formControlName="password">
+        <mat-error *ngIf="createOwnerForm?.get('password')?.errors?.['required']">
+          A password is required.
+        </mat-error>
+      </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+</div>

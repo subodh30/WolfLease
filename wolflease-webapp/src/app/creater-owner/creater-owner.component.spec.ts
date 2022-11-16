@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { OwnerComponent } from './owner.component';
+import { CreaterOwnerComponent } from './creater-owner.component';
 
-describe('OwnerComponent', () => {
-  let component: OwnerComponent;
-  let fixture: ComponentFixture<OwnerComponent>;
+describe('CreaterOwnerComponent', () => {
+  let component: CreaterOwnerComponent;
+  let fixture: ComponentFixture<CreaterOwnerComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ OwnerComponent ]
+      declarations: [ CreaterOwnerComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(OwnerComponent);
+    fixture = TestBed.createComponent(CreaterOwnerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
