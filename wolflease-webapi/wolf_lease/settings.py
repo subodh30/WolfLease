@@ -55,7 +55,8 @@ MIDDLEWARE = [
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
-CSRF_TRUSTED_ORIGINS = ["https://deep-mm-curly-invention-p7465xg56vr396g9-8000.preview.app.github.dev","http://localhost","http://127.0.0.1"]
+CSRF_TRUSTED_ORIGINS = ["https://deep-mm-curly-invention-p7465xg56vr396g9-8000.preview.app.github.dev","http://localhost","http://127.0.0.1", "https://wolflease-app.azurewebsites.net"]
+ALLOWED_HOSTS = ['*']
 
 ROOT_URLCONF = 'wolf_lease.urls'
 
