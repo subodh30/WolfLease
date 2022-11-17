@@ -25,6 +25,7 @@ jobs:
       - name: Create and start virtual environment
         run: |
           cd wolflease-webapi
+          python -m pip install --upgrade pip
           python -m venv venv
           source venv/bin/activate
       
@@ -32,10 +33,9 @@ jobs:
         run: |
           cd wolflease-webapi
           pip install -r requirements.txt
+          pip install -U pyopenssl
           python manage.py makemigrations
           python manage.py migrate
-          curl https://pyenv.run | bash
-          pyenv install -f 3.8.0
           echo "from django.contrib.auth.models import User" > createadmin.py
           echo "User.objects.create_superuser('admin', 'admin@wolflease.com', 'admin')" >> createadmin.py
           python manage.py shell < createadmin.py
