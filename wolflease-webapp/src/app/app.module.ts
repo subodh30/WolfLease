@@ -16,6 +16,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CreateApartmentComponent } from './create-apartment/create-apartment.component';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { ApartmentComponent } from './apartment/apartment.component';
+import { InterestComponent } from './interest/interest.component';
+import { CreateFlatComponent } from './create-flat/create-flat.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,12 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
     FlatComponent,
     UserComponent,
     CreaterOwnerComponent,
-    CreateApartmentComponent
+    CreateApartmentComponent,
+    LoginComponent,
+    SignupComponent,
+    ApartmentComponent,
+    InterestComponent,
+    CreateFlatComponent
   ],
   imports: [
     BrowserModule,
