@@ -1,36 +1,26 @@
-<div class="wrapper">
-    <div class="overlay" *ngIf="loading === true">
-      <div class="center">
-    <mat-spinner diameter=50 ></mat-spinner>
-    </div>
-    </div>
-    <form [formGroup]="createApartmentForm" (ngSubmit)="createNewApartment()" novalidate>
-      <mat-form-field class="full-width" appearance="fill">
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true}"></ngx-loading>
+<div style="padding: 40px;">
+  <h2>Create Apartment</h2>
+  <form [formGroup]="createApartmentForm" (ngSubmit)="createNewApartment()" novalidate>
+    <div style="margin-top: 10px;">  
+    <mat-form-field appearance="outline">
         <mat-label>Enter apartment address</mat-label>
         <input type="text" matInput placeholder="123 Street Lane, Raleigh" formControlName="address">
         <mat-error *ngIf="createApartmentForm?.get('address')?.errors?.['required']">
           An address is required.
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="full-width" appearance="fill">
+    </div>
+    <div style="margin-top: 10px;">  
+      <mat-form-field appearance="outline">
         <mat-label>Enter facility</mat-label>
         <input type="text" matInput formControlName="facilities">
         <mat-error *ngIf="createApartmentForm?.get('facilities')?.errors?.['required']">
           A facility is required.
         </mat-error>
       </mat-form-field>
-      <mat-form-field class="full-width" appearance="fill">
-        <mat-label>Select an Owner</mat-label>
-        <mat-select formControlName="owner_id">
-            <mat-option>--</mat-option>
-            <mat-option *ngFor="let owner of owners" [value]="owner.id">
-              {{owner.id}}
-            </mat-option>
-          </mat-select>
-        <mat-error *ngIf="createApartmentForm?.get('owner_id')?.errors?.['required']">
-          An owner is required.
-        </mat-error>
-      </mat-form-field>
+      </div>
+
     <button mat-raised-button color="primary" type="submit">Submit</button>
     </form>
 </div>

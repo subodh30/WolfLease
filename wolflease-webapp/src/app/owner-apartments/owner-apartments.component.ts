@@ -72,5 +72,9 @@ export class OwnerApartmentsComponent implements OnInit {
   {
     this.router.navigate(['/interests'],{queryParams: {flatId : flat_id}});
   }
+  createApartment()
+  {
+    this.router.navigate(['/apartment/new'],{queryParams: {owner_id : this.owner.id}});
+  }
   }
 
