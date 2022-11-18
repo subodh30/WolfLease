@@ -31,7 +31,7 @@ export class LoginComponent {
             ApiService.LoggedInUserEmail = this.login.email;
             ApiService.LoggedInUserType = "owner";
             ApiService.LoggedInOwner = data[0];
-            this.router.navigate(['/owner/apartment'],{queryParams :{ownerId:data[0].id}});
+            this.router.navigate(['/owner/apartment']);
           }
           else {
             this._snackBar.open("Invalid credentials", "Close", {

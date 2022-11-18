@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
 import { Apartment } from '../models/Apartment';
+import { Owner } from '../models/Owner';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -12,25 +12,24 @@ import { ApiService } from '../services/api.service';
 export class OwnerApartmentsComponent implements OnInit {
 
   loading: boolean = false;
-  ownerId : string = '';
+  selectedApartmentId : string = '';
   apartments: Apartment[] = [];
   ownerApartment: any[];
-  constructor(private route: ActivatedRoute,public _apiService:ApiService,private _snackBar: MatSnackBar) { 
+  ownerFlats: any[];
+  owner: Owner = ApiService.LoggedInOwner;
+  constructor(public _apiService:ApiService,private _snackBar: MatSnackBar) { 
     this.ownerApartment = [];
+    this.ownerFlats = [];
   }
 
   ngOnInit(): void {
-    this.route.queryParams
-      .subscribe(params => {
-        this.ownerId = params['ownerId'];
-      }
-    );
-    if(this.ownerId != '')
+    this.loading = true;
+    if(this.owner.id != '')
     {
       this._apiService.getApartments().subscribe(
         (data) => {
           this.apartments = data;
-          this.ownerApartment.push(this.apartments.find(apartment => apartment.owner_id == this.ownerId)!);
+          this.ownerApartment.push(this.apartments.find(apartment => apartment.owner_id == this.owner.id)!);
           this.loading = false;
           console.log(this.ownerApartment);
         },
@@ -48,6 +47,20 @@ export class OwnerApartmentsComponent implements OnInit {
         duration: 2000,
       });
     }
+  }
+  getFlatsForApartment(apartment_id : any){
+    this.selectedApartmentId = apartment_id;
+    this._apiService.getFlats().subscribe((data) => {
+      this.ownerFlats.push(data.find(flat => flat.associated_apt_id == apartment_id)!);
+      this.loading = false;
+      console.log(this.ownerFlats);
+    },
+    (error) => {
+      this.loading = false;
+      this._snackBar.open("Error fetching flats", "Close", {
+        duration: 2000,
+      });
+    });
   }
   }
 
