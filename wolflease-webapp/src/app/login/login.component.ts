@@ -24,14 +24,14 @@ export class LoginComponent {
     this.loading = true;
     this._apiService.searchOwners(this.login.email).subscribe(
       (data) => {
-        console.log(data);
         if (data.length > 0) {
           this.loading = false;
           if (data[0].password == this.login.password) {
+            console.log(data);
             ApiService.LoggedInUserEmail = this.login.email;
             ApiService.LoggedInUserType = "owner";
             ApiService.LoggedInOwner = data[0];
-            this.router.navigate(['/apartment']);
+            this.router.navigate(['/owner/apartment'],{queryParams :{ownerId:data[0].id}});
           }
           else {
             this._snackBar.open("Invalid credentials", "Close", {

@@ -25,6 +25,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgxLoadingModule } from 'ngx-loading';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { OwnerApartmentsComponent } from './owner-apartments/owner-apartments.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { MatButtonModule } from '@angular/material/button';
     SignupComponent,
     ApartmentComponent,
     InterestComponent,
-    CreateFlatComponent
+    CreateFlatComponent,
+    OwnerApartmentsComponent
   ],
   imports: [
     BrowserModule,
