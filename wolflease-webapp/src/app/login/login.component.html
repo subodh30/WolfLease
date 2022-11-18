@@ -1,1 +1,36 @@
-<p>login works!</p>
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true}"></ngx-loading>
+
+<div style="padding: 80px;">
+    <h2>Login 🔐</h2>
+    <form #loginForm='ngForm'>
+        <div>
+            <mat-label>Email</mat-label><br>
+            <mat-form-field appearance="outline">
+                <input matInput type="text" required #Username="ngModel" type="email"
+                    [(ngModel)]="login.email" name="Username" maxlength="50"
+                    [class.is-invalid]="Username.invalid && (Username.touched || Username.dirty)" email>
+                <mat-error *ngIf="Username.invalid && (Username.touched || Username.dirty)">
+                    Enter a valid email
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div style="margin-top: 10px;">
+            <mat-label>Password</mat-label><br>
+            <mat-form-field appearance="outline">
+                <input matInput #Password="ngModel"
+                    [(ngModel)]="login.password" name="Password" required type="password"
+                    [class.is-invalid]="Password.invalid && (Password.touched || Password.dirty)">
+                <mat-error *ngIf="Password.invalid && (Password.touched || Password.dirty)">
+                    Enter a valid password
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <button mat-raised-button (click)="submitForm()" [disabled]="loginForm.form.invalid" style="margin-top: 10px;">Login</button>
+    </form>
+
+    <div style="margin-top: 10px;">
+        New User? <a routerLink="/signup">Sign Up</a>
+    </div>
+</div>

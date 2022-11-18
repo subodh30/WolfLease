@@ -21,6 +21,10 @@ import { SignupComponent } from './signup/signup.component';
 import { ApartmentComponent } from './apartment/apartment.component';
 import { InterestComponent } from './interest/interest.component';
 import { CreateFlatComponent } from './create-flat/create-flat.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgxLoadingModule } from 'ngx-loading';
+import { FormsModule } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,11 @@ import { CreateFlatComponent } from './create-flat/create-flat.component';
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     MatSelectModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule,
+    NgxLoadingModule.forRoot({}),
+    FormsModule,
+    MatButtonModule
   ],
   providers: [HttpClient],
   bootstrap: [AppComponent]

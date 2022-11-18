@@ -1,1 +1,110 @@
-<p>signup works!</p>
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true}"></ngx-loading>
+<div style="padding: 80px;">
+    <h2>SignUp</h2>
+
+    <div style="margin-top: 10px;">
+        <mat-label>Role</mat-label><br>
+        <mat-form-field appearance="outline">
+            <mat-select [(ngModel)]="selectedRoleIndex" name="role">
+                <mat-option *ngFor="let role of roles" [value]="roles.indexOf(role)">
+                    {{role}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <form #employeeForm='ngForm' style="margin-top: 20px;">
+
+        <div>
+            <mat-label>Email</mat-label><br>
+            <mat-form-field appearance="outline">
+                <input matInput type="email" required #Email="ngModel" [(ngModel)]="owner.contact_email" name="Email"
+                    [class.is-invalid]="Email.invalid && (Email.touched || Email.dirty)">
+                <mat-error *ngIf="Email.invalid && (Email.touched || Email.dirty)">
+                    Enter a valid email id
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div style="margin-top: 10px;">
+            <mat-label>Contact Number</mat-label><br>
+            <mat-form-field appearance="outline">
+                <input matInput #Phone="ngModel" [(ngModel)]="owner.contact_number" name="Phone" required type="text"
+                    minlength="10" maxlength="10" maxlength="250"
+                    [class.is-invalid]="Phone.invalid && (Phone.touched || Phone.dirty)">
+                <mat-error *ngIf="Phone.invalid && (Phone.touched || Phone.dirty)">
+                    Enter a valid contact number
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div style="margin-top: 10px;">
+            <mat-label>Password</mat-label><br>
+            <mat-form-field appearance="outline">
+                <input matInput #Password="ngModel" [(ngModel)]="owner.password" name="Password" required
+                    type="text" minlength="8" maxlength="250"
+                    [class.is-invalid]="Password.invalid && (Password.touched || Password.dirty)">
+                <mat-error *ngIf="Password.invalid && (Password.touched || Password.dirty)">
+                    Enter a valid password of 8 characters or more
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div style="margin-top: 10px;" *ngIf="selectedRoleIndex == 1">
+            <mat-label>Date of birth</mat-label><br>
+            <mat-form-field appearance="outline">
+                <input matInput #DOB="ngModel" [(ngModel)]="user.dob" name="DOB" required type="date"
+                    [class.is-invalid]="DOB.invalid && (DOB.touched || DOB.dirty)">
+                <mat-error *ngIf="DOB.invalid && (DOB.touched || DOB.dirty)">
+                    Enter a valid date of birth
+                </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div style="margin-top: 10px;" *ngIf="selectedRoleIndex == 1">
+            <mat-label>Gender</mat-label><br>
+            <mat-form-field appearance="outline">
+                <mat-select [(ngModel)]="user.gender" name="gender">
+                    <mat-option *ngFor="let gender of genders" [value]="gender">
+                        {{gender == 'M'?'Male':(gender == 'F' ? 'Female' : 'Other')}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div style="margin-top: 10px;" *ngIf="selectedRoleIndex == 1">
+            <mat-label>Prefer Smoking</mat-label><br>
+            <mat-form-field appearance="outline">
+                <mat-select [(ngModel)]="user.pref_smoking" name="pref_smoking">
+                    <mat-option *ngFor="let option of options" [value]="option">
+                        {{option == 'Y'?'Yes':'No'}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div style="margin-top: 10px;" *ngIf="selectedRoleIndex == 1">
+            <mat-label>Prefer Drinking</mat-label><br>
+            <mat-form-field appearance="outline">
+                <mat-select [(ngModel)]="user.pref_drinking" name="pref_drinking">
+                    <mat-option *ngFor="let option of options" [value]="option">
+                        {{option == 'Y'?'Yes':'No'}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div style="margin-top: 10px;" *ngIf="selectedRoleIndex == 1">
+            <mat-label>Prefer Vegetarian</mat-label><br>
+            <mat-form-field appearance="outline">
+                <mat-select [(ngModel)]="user.pref_veg" name="pref_veg">
+                    <mat-option *ngFor="let option of options" [value]="option">
+                        {{option == 'Y'?'Yes':'No'}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <button mat-raised-button (click)="submitForm()" style="margin-top: 50px;">Sign Up</button>
+    </form>
+</div>
