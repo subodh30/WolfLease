@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute } from '@angular/router';
+import { Apartment } from '../models/Apartment';
 import { ApiService } from '../services/api.service';
 
 @Component({
@@ -10,8 +11,13 @@ import { ApiService } from '../services/api.service';
 })
 export class OwnerApartmentsComponent implements OnInit {
 
+  loading: boolean = false;
   ownerId : string = '';
-  constructor(private route: ActivatedRoute,public _apiService:ApiService,private _snackBar: MatSnackBar) { }
+  apartments: Apartment[] = [];
+  ownerApartment: any[];
+  constructor(private route: ActivatedRoute,public _apiService:ApiService,private _snackBar: MatSnackBar) { 
+    this.ownerApartment = [];
+  }
 
   ngOnInit(): void {
     this.route.queryParams
@@ -21,17 +27,20 @@ export class OwnerApartmentsComponent implements OnInit {
     );
     if(this.ownerId != '')
     {
-      this._apiService.searchApartments(this.ownerId).subscribe(data => {
-        this._snackBar.open("User created successfully!", "", {
-          duration: 2000,
-        });
-        console.log(data);
-      },
-      error => {
-        this._snackBar.open("Error searching for your apartments!", "", {
-          duration: 2000,
-        });
-      });
+      this._apiService.getApartments().subscribe(
+        (data) => {
+          this.apartments = data;
+          this.ownerApartment.push(this.apartments.find(apartment => apartment.owner_id == this.ownerId)!);
+          this.loading = false;
+          console.log(this.ownerApartment);
+        },
+        (error) => {
+          this.loading = false;
+          this._snackBar.open("Error fetching apartments", "Close", {
+            duration: 2000,
+          });
+        }
+      );
 
     }
     else{

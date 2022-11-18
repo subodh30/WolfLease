@@ -1,1 +1,19 @@
-<p>owner-apartments works!</p>
+<div *ngIf = "ownerApartment.length == 0"><h3>Sorry! You do not have apartments.</h3></div>
+<table class="styled-table" *ngIf = "ownerApartment.length > 0">
+    <thead class="thead-light">
+        <tr class="header" style="background-color: #ffffff;">
+            <th scope="col">Apartment Address</th>
+            <th scope="col">Facilities</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let apartment of ownerApartment" class="table-row-item">
+            <td>{{apartment.address}}</td>
+            <td>{{apartment.facilities}}</td>
+            <td>
+                <button mat-raised-button>Show Flats</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
