@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { CreateOwner} from '../models/CreateOwner';
+import { Owner} from '../models/Owner';
 
 
 export interface DialogData {
@@ -37,7 +37,7 @@ export class CreaterOwnerComponent {
     {
       this.createOwnerForm.markAllAsTouched();
       this.loading = true;
-      let owner = new CreateOwner({
+      let owner = new Owner({
         "contact_number": this.createOwnerForm.get('contact_number')?.value,
         "contact_email" : this.createOwnerForm.get('contact_email')?.value,
         "password" : this.createOwnerForm.get('password')?.value

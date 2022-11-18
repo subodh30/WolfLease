@@ -1,3 +1,12 @@
 """
-    Used to reflect the changes that we make to the database schema into the actual database.
+.. include:: ../../README.md
+.. include:: ../README.md
 """
+
+import os
+
+if not os.environ.get("DJANGO_SETTINGS_MODULE"):
+    import django
+
+    os.environ["DJANGO_SETTINGS_MODULE"] = "wolf_lease.settings"
+    django.setup()

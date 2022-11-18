@@ -1,15 +1,23 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AdminComponent } from './admin/admin.component';
+import { ApartmentComponent } from './apartment/apartment.component';
 import { CreateApartmentComponent } from './create-apartment/create-apartment.component';
-import { CreaterOwnerComponent } from './creater-owner/creater-owner.component';
+import { CreateFlatComponent } from './create-flat/create-flat.component';
+import { InterestComponent } from './interest/interest.component';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { UserComponent } from './user/user.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'admin', component: AdminComponent},
-  { path: 'create/owner', component: CreaterOwnerComponent},
-  { path: 'create/apartment', component: CreateApartmentComponent},
-  { path: '**', redirectTo: '/home' }
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'user', component: UserComponent },
+  { path: 'apartment', component: ApartmentComponent },
+  { path: 'apartment/new', component: CreateApartmentComponent},
+  { path: 'flat/new', component: CreateFlatComponent},
+  { path: 'interests', component: InterestComponent},
+  { path: '**', redirectTo: '/login' }
 ];
 
 @NgModule({
