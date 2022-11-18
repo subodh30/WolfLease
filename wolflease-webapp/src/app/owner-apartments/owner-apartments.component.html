@@ -40,7 +40,7 @@
                 <button mat-raised-button (click) = "showLease(flat.lease_id)">Show Lease</button>
             </td>
             <td *ngIf = "flat.availability == true">
-                <button mat-raised-button>Show Interests</button>
+                <button mat-raised-button (click) = "showInterestsForFlat(flat.id)">Show Interests</button>
             </td>
         </tr>
     </tbody>

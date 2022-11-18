@@ -30,10 +30,9 @@ export class OwnerApartmentsComponent implements OnInit {
       this._apiService.getApartments().subscribe(
         (data) => {
           this.apartments = data;
-          this.apartments.filter(apartment => apartment.owner_id == this.owner.id)
-          this.ownerApartment = this.apartments;
+          console.log(this.owner.id);
+          this.ownerApartment = this.apartments.filter(apartment => apartment.owner_id === this.owner.id);
           this.loading = false;
-          console.log();
         },
         (error) => {
           this.loading = false;
@@ -68,6 +67,10 @@ export class OwnerApartmentsComponent implements OnInit {
   showLease(lease_id : string)
   {
     this.router.navigate(['/lease'],{queryParams: {leaseId : lease_id}});
+  }
+  showInterestsForFlat(flat_id : string)
+  {
+    this.router.navigate(['/interests'],{queryParams: {flatId : flat_id}});
   }
   }
 
