@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { Apartment } from '../models/Apartment';
 import { Owner } from '../models/Owner';
 import { ApiService } from '../services/api.service';
@@ -17,7 +18,7 @@ export class OwnerApartmentsComponent implements OnInit {
   ownerApartment: any[];
   ownerFlats: any[];
   owner: Owner = ApiService.LoggedInOwner;
-  constructor(public _apiService:ApiService,private _snackBar: MatSnackBar) { 
+  constructor(public router: Router,public _apiService:ApiService,private _snackBar: MatSnackBar) { 
     this.ownerApartment = [];
     this.ownerFlats = [];
   }
@@ -29,9 +30,10 @@ export class OwnerApartmentsComponent implements OnInit {
       this._apiService.getApartments().subscribe(
         (data) => {
           this.apartments = data;
-          this.ownerApartment.push(this.apartments.find(apartment => apartment.owner_id == this.owner.id)!);
+          this.apartments.filter(apartment => apartment.owner_id == this.owner.id)
+          this.ownerApartment = this.apartments;
           this.loading = false;
-          console.log(this.ownerApartment);
+          console.log();
         },
         (error) => {
           this.loading = false;
@@ -49,9 +51,10 @@ export class OwnerApartmentsComponent implements OnInit {
     }
   }
   getFlatsForApartment(apartment_id : any){
+    this.ownerFlats = [];
     this.selectedApartmentId = apartment_id;
     this._apiService.getFlats().subscribe((data) => {
-      this.ownerFlats.push(data.find(flat => flat.associated_apt_id == apartment_id)!);
+      this.ownerFlats = data.filter(flat => flat.associated_apt_id == apartment_id);
       this.loading = false;
       console.log(this.ownerFlats);
     },
@@ -61,6 +64,10 @@ export class OwnerApartmentsComponent implements OnInit {
         duration: 2000,
       });
     });
+  }
+  showLease(lease_id : string)
+  {
+    this.router.navigate(['/lease'],{queryParams: {leaseId : lease_id}});
   }
   }
 
