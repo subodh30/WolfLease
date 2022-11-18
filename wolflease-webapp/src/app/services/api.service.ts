@@ -18,6 +18,8 @@ export class ApiService {
   private apiUrl = environment.apiBaseUrl;
   static LoggedInUserEmail: string;
   static LoggedInUserType: string;
+  static LoggedInUser: any;
+  static LoggedInOwner: any;
 
   httpOptions = {
     headers: new HttpHeaders({

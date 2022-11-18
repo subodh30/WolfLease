@@ -2,7 +2,7 @@ export class Apartment {
     id: string;
     address: string;
     facilities: string;
-    owner_id: number;
+    owner_id: string;
 
     constructor(json?: any) {
         if (json) {
@@ -15,7 +15,7 @@ export class Apartment {
             this.id = "";
             this.address = "";
             this.facilities = "";
-            this.owner_id = 0;
+            this.owner_id = "";
         }
     }
 }

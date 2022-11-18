@@ -30,6 +30,7 @@ export class LoginComponent {
           if (data[0].password == this.login.password) {
             ApiService.LoggedInUserEmail = this.login.email;
             ApiService.LoggedInUserType = "owner";
+            ApiService.LoggedInOwner = data[0];
             this.router.navigate(['/apartment']);
           }
           else {
@@ -47,6 +48,7 @@ export class LoginComponent {
                 if (data[0].password == this.login.password) {
                   ApiService.LoggedInUserEmail = this.login.email;
                   ApiService.LoggedInUserType = "user";
+                  ApiService.LoggedInUser = data[0];
                   this.router.navigate(['/user']);
                 }
                 else {

@@ -42,7 +42,7 @@
             <mat-label>Password</mat-label><br>
             <mat-form-field appearance="outline">
                 <input matInput #Password="ngModel" [(ngModel)]="owner.password" name="Password" required
-                    type="text" minlength="8" maxlength="250"
+                    type="password" minlength="8" maxlength="250"
                     [class.is-invalid]="Password.invalid && (Password.touched || Password.dirty)">
                 <mat-error *ngIf="Password.invalid && (Password.touched || Password.dirty)">
                     Enter a valid password of 8 characters or more

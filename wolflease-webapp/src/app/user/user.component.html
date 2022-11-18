@@ -1,1 +1,41 @@
-<p>user works!</p>
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true}"></ngx-loading>
+<div style="margin: 20px;">
+    <h2>Welcome: {{user.contact_email}}</h2>
+
+    <div *ngIf="user.flat_id != ''">
+        <h3>Current Flat Details</h3>
+        
+        <p>Flat ID: {{user.flat_id}}</p>
+        <p>Apartment Address: {{userApartment.address}}</p>
+        <p>Floor Number: {{userFlat.floor_number}}</p>
+        <p>Lease start date: {{userLease.lease_start_date}}</p>
+        <p>Lease end date: {{userLease.lease_end_date}}</p>
+    </div>
+
+    <br>
+    <br>
+    <h2>Available Apartments</h2>
+
+    <table class="styled-table">
+        <thead class="thead-light">
+            <tr class="header" style="background-color: #ffffff;">
+                <th scope="col">Apartment Address</th>
+                <th scope="col">Floor Number</th>
+                <th scope="col">Facilities</th>
+                <th scope="col">Rent per room</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let availableFlat of availableFlats" class="table-row-item">
+                <td>{{getApartmentForFlat(availableFlat).address}}</td>
+                <td>{{availableFlat.floor_number}}</td>
+                <td>{{getApartmentForFlat(availableFlat).facilities}}</td>
+                <td>{{availableFlat.rent_per_room}}</td>
+                <td>
+                    <button mat-raised-button (click)="submitInterest(getApartmentForFlat(availableFlat).id, availableFlat.id)">Show Interest</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
