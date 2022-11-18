@@ -1,1 +1,21 @@
-<p>interest works!</p>
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true}"></ngx-loading>
+<div style="margin: 20px;">
+    <h2>Showing Interests for flat: {{flatId}}</h2>
+<div *ngIf = "interests.length == 0"><h3>Sorry! You do not have any interests for this flat.</h3></div>
+<table class="styled-table" *ngIf = "interests.length > 0">
+    <thead class="thead-light">
+        <tr class="header" style="background-color: #ffffff;">
+            <th scope="col">Apartment</th>
+            <th scope="col">Flat</th>
+            <th scope="col">Interested User</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let interest of interests" class="table-row-item">
+            <td>{{interest.apartment_id}}</td>
+            <td>{{interest.flat_id}}</td>
+            <td>{{interest.user_id}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>
