@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './create-flat.component.html',
   styleUrls: ['./create-flat.component.scss']
 })
-export class CreateFlatComponent implements OnInit {
+export class CreateFlatComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
