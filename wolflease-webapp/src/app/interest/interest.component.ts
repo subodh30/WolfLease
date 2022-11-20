@@ -25,10 +25,8 @@ export class InterestComponent implements OnInit{
     {
       this._apiService.getInterests().subscribe(
         (data) => {
-          data.filter(flat => flat.flat_id == this.flatId)!
-          this.interests = data;
+          this.interests = data.filter(flat => flat.flat_id == this.flatId)!
           this.loading = false;
-          console.log(this.interests);
         },
         (error) => {
           this.loading = false;
