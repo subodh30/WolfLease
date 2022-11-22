@@ -18,6 +18,7 @@ export class OwnerApartmentsComponent implements OnInit {
   ownerApartment: any[];
   ownerFlats: any[];
   owner: Owner = ApiService.LoggedInOwner;
+  showFlats = false;
   constructor(public router: Router,public _apiService:ApiService,private _snackBar: MatSnackBar) { 
     this.ownerApartment = [];
     this.ownerFlats = [];
@@ -25,6 +26,7 @@ export class OwnerApartmentsComponent implements OnInit {
 
   ngOnInit(): void {
     this.loading = true;
+    this.showFlats = false;
     if(this.owner.id != '')
     {
       this._apiService.getApartments().subscribe(
@@ -51,11 +53,12 @@ export class OwnerApartmentsComponent implements OnInit {
   }
   getFlatsForApartment(apartment_id : any){
     this.ownerFlats = [];
+    this.showFlats = false;
     this.selectedApartmentId = apartment_id;
     this._apiService.getFlats().subscribe((data) => {
       this.ownerFlats = data.filter(flat => flat.associated_apt_id == apartment_id);
       this.loading = false;
-      console.log(this.ownerFlats);
+      this.showFlats = true;
     },
     (error) => {
       this.loading = false;
@@ -71,6 +74,14 @@ export class OwnerApartmentsComponent implements OnInit {
   showInterestsForFlat(flat_id : string)
   {
     this.router.navigate(['/interests'],{queryParams: {flatId : flat_id}});
+  }
+  createApartment()
+  {
+    this.router.navigate(['/apartment/new'],{queryParams: {owner_id : this.owner.id}});
+  }
+  createFlat()
+  {
+    this.router.navigate(['/flat/new'],{queryParams: {apartmentId : this.selectedApartmentId}});
   }
   }
 

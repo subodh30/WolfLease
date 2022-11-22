@@ -1,1 +1,25 @@
-<p>create-flat works!</p>
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true}"></ngx-loading>
+<div style="padding: 40px;">
+  <h2>Create Flat</h2>
+  <form [formGroup]="createFlatForm" (ngSubmit)="createNewFlat()" novalidate>
+    <div style="margin-top: 10px;">  
+    <mat-form-field appearance="outline">
+        <mat-label>Enter rent per room</mat-label>
+        <input type="text" matInput placeholder="$500" formControlName="rentPerRoom">
+        <mat-error *ngIf="createFlatForm?.get('rentPerRoom')?.errors?.['required']">
+          Rent Per room is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div style="margin-top: 10px;">  
+      <mat-form-field appearance="outline">
+        <mat-label>Enter floor number</mat-label>
+        <input type="text" matInput formControlName="floorNumber">
+        <mat-error *ngIf="createFlatForm?.get('floorNumber')?.errors?.['required']">
+          A floor number is required.
+        </mat-error>
+      </mat-form-field>
+      </div>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+    </form>
+</div>
