@@ -37,4 +37,7 @@ export class InterestComponent implements OnInit{
       );
     }
   }
+  acceptInterestInApartment(interest : any){
+    console.log(interest);
+  }
 }
