@@ -5,6 +5,6 @@ WORKDIR /app
 RUN python -m pip install --upgrade pip
 RUN python -m venv venv
 RUN source venv/bin/activate
-RUN apt-get update && apt-get upgrade -y && apt-get install gcc
+RUN apk add gcc
 RUN pip install -r requirements.txt
 CMD ["python", "manage.py", "runserver"]
