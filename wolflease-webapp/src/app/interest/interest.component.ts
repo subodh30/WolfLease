@@ -1,38 +1,57 @@
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Apartment } from '../models/Apartment';
+import { Flat } from '../models/Flat';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Interest } from '../models/Interest';
-import { ApiService } from '../services/api.service';
-import {Lease} from '../models/Lease';
-import {Flat} from '../models/Flat';
 import { User } from '../models/User';
+import { ApiService } from '../services/api.service';
+import { Lease } from '../models/Lease';
 
 @Component({
   selector: 'app-interest',
   templateUrl: './interest.component.html',
   styleUrls: ['./interest.component.scss']
 })
-export class InterestComponent implements OnInit{
+export class InterestComponent implements OnInit {
 
-  constructor(public router: Router,private route : ActivatedRoute, public _apiService:ApiService,private _snackBar: MatSnackBar) { }
-  flatId : string = '';
-  interests : Interest[] = [];
-  loading :boolean = false;
-  flatDetails : Flat = new Flat();
-  userDetails : User = new User();
-  ngOnInit(){
+  constructor(private route: ActivatedRoute, public _apiService: ApiService, private _snackBar: MatSnackBar, public router: Router) { }
+  flatId: string = '';
+  interests: Interest[] = [];
+  apartments: Apartment[] = [];
+  flats: Flat[] = [];
+  users: User[] = [];
+  loading: boolean = false;
+  flatDetails: Flat = new Flat();
+  userDetails: User = new User();
+
+  ngOnInit() {
     this.loading = true;
     this.route.queryParams
       .subscribe(params => {
         this.flatId = params['flatId'];
       }
-    );
-    if(this.flatId != '')
-    {
+      );
+    if (this.flatId != '') {
       this._apiService.getInterests().subscribe(
         (data) => {
           this.interests = data.filter(flat => flat.flat_id == this.flatId)!
-          this.loading = false;
+          this._apiService.getApartments().subscribe(
+            (data) => {
+              this.apartments = data;
+              this._apiService.getFlats().subscribe(
+                (data) => {
+                  this.flats = data;
+                  this._apiService.getUsers().subscribe(
+                    (data) => {
+                      this.users = data;
+                      this.loading = false;
+                    }
+                  );
+                }
+              );
+            }
+          );
         },
         (error) => {
           this.loading = false;
@@ -44,8 +63,21 @@ export class InterestComponent implements OnInit{
       this.getFlatDetails();
     }
   }
-  updateUserDetails(userId : any)
-  {
+
+  getApartment(id: string): Apartment {
+    return this.apartments.find(apartment => apartment.id == id)!;
+  }
+
+  getFlat(id: string): Flat {
+    return this.flats.find(flat => flat.id == id)!;
+  }
+
+  getUser(id: string): User {
+    return this.users.find(user => user.id == id)!;
+  }
+
+
+  updateUserDetails(userId: any) {
     this._apiService.getUsers().subscribe(
       (data) => {
         this.loading = false;
@@ -54,49 +86,50 @@ export class InterestComponent implements OnInit{
         this._apiService.updateUser(this.userDetails);
       });
   }
-  updateLeaseForFlat = (data : Lease) =>
-  {
+  updateLeaseForFlat = (data: Lease) => {
     this.flatDetails.lease_id = data.id;
     this.flatDetails.availability = false;
     let success = false;
     this._apiService.updateFlat(this.flatDetails).subscribe(
       (data) => {
       },
-      (error) => {this.loading = false;
+      (error) => {
+        this.loading = false;
         this._snackBar.open("Error updating flat details", "Close", {
           duration: 2000,
-        });}
+        });
+      }
     );
   }
-  getFlatDetails(){
+  getFlatDetails() {
     this._apiService.getFlats().subscribe((data) => {
       this.flatDetails = data.filter(flat => flat.id == this.flatId)[0];
     },
-    (error) => {
-      this.loading = false;
-      this._snackBar.open("Error fetching flat details", "Close", {
-        duration: 2000,
+      (error) => {
+        this.loading = false;
+        this._snackBar.open("Error fetching flat details", "Close", {
+          duration: 2000,
+        });
       });
-    });
   }
-  acceptInterestInApartment(interest : Interest){
+  acceptInterestInApartment(interest: Interest) {
     //create a new lease
     let leaseStartDate = new Date();
     let leaseEndDate = new Date(new Date().setFullYear(leaseStartDate.getFullYear() + 1));
-    let lease = new Lease({"lease_start_date":leaseStartDate.toISOString().split('T')[0], "lease_end_date":leaseEndDate.toISOString().split('T')[0]});
+    let lease = new Lease({ "lease_start_date": leaseStartDate.toISOString().split('T')[0], "lease_end_date": leaseEndDate.toISOString().split('T')[0] });
     this._apiService.addLease(lease).subscribe(
       (data) => {
         this.updateLeaseForFlat(data);
         this.updateUserDetails(interest.user_id);
         this.router.navigate(['/owner/apartment']);
       },
-      (error) =>{
+      (error) => {
         this.loading = false;
         this._snackBar.open("Error creating a lease", "Close", {
-        duration: 2000,
-      });
+          duration: 2000,
+        });
       }
-      
+
     );
   }
 }

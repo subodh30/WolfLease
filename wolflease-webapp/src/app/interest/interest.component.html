@@ -13,9 +13,9 @@
     </thead>
     <tbody>
         <tr *ngFor="let interest of interests" class="table-row-item">
-            <td>{{interest.apartment_id}}</td>
+            <td>{{getApartment(interest.apartment_id).address}}</td>
             <td>{{interest.flat_id}}</td>
-            <td>{{interest.user_id}}</td>
+            <td>{{getUser(interest.user_id).contact_email}}</td>
             <td>
                 <button mat-raised-button (click) = "acceptInterestInApartment(interest)">Accept</button>
             </td>
