@@ -32,6 +32,22 @@ Finding apartments on a lease can be a difficult and time-consuming task. We can
 
 ---
 
+Go to the wolflease website: [yoururl.tech/wolflease](https://yoururl.tech/wolflease)
+
+**Owner Credentials:**
+
+```
+Email: owner@wolflease.com
+Password: 12345678
+```
+
+**User Credentials:**
+
+```
+Email: user@wolflease.com
+Password: 12345678
+```
+
 ## We love our contributors ❤️❤️
 
 Make a [pull request](https://github.com/CSC510-Group-5/WolfLease/compare) to help contribute.
