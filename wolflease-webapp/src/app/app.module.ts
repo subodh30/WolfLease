@@ -26,6 +26,8 @@ import { NgxLoadingModule } from 'ngx-loading';
 import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { OwnerApartmentsComponent } from './owner-apartments/owner-apartments.component';
+import { UserAuthGuard } from './services/auth-guard.service';
+import { OwnerAuthGuard } from './services/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,7 @@ import { OwnerApartmentsComponent } from './owner-apartments/owner-apartments.co
     FormsModule,
     MatButtonModule
   ],
-  providers: [HttpClient],
+  providers: [HttpClient, UserAuthGuard, OwnerAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
