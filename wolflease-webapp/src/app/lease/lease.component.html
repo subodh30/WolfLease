@@ -1,0 +1,20 @@
+<ngx-loading [show]="loading" [config]="{fullScreenBackdrop: true}"></ngx-loading>
+<div style="margin: 20px;">
+    <h2>Showing Details for lease : {{leaseId}}</h2>
+<table class="styled-table" *ngIf = "leaseDetails">
+    <thead class="thead-light">
+        <tr class="header" style="background-color: #ffffff;">
+            <th scope="col">Lease Id</th>
+            <th scope="col">Start Date</th>
+            <th scope="col">End Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            
+            <td>{{leaseDetails.lease_end_date}}
+            </td>
+        </tr>
+    </tbody>
+</table>
+</div>
